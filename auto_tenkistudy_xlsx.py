@@ -7,6 +7,7 @@ import sys
 import csv
 
 import os
+import openpyxl
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.drawing.image import Image as xlImage
@@ -165,8 +166,10 @@ def tsf_to_xlsx(tsf, dest, q=20):
         
         #【C】山行名
         sheet[f"C{row+1}"].value = tsf[row][0]
+        sheet[f"C{row+1}"].alignment = openpyxl.styles.Alignment(wrapText=True)
         #【D】日付
         sheet[f"D{row+1}"].value = tsf[row][1]
+        sheet[f"D{row+1}"].alignment = openpyxl.styles.Alignment(wrapText=True)
         #【E】画像
         img = xlImage(io.BytesIO(get_img_100(date, "blob:", q)))
         sheet.add_image(img, f"E{row +1}")
@@ -175,8 +178,10 @@ def tsf_to_xlsx(tsf, dest, q=20):
         img = None
         #【F】コメント
         sheet[f"F{row+1}"].value = get_comment_100(date)
+        sheet[f"F{row+1}"].alignment = openpyxl.styles.Alignment(wrapText=True)
         #【G】本文
         sheet[f"G{row+1}"].value = tsf[row][2]
+        sheet[f"G{row+1}"].alignment = openpyxl.styles.Alignment(wrapText=True)
     
     if dest != "blob:":
         workbook.save(dest)
