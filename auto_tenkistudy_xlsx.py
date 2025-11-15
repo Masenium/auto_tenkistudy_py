@@ -446,9 +446,8 @@ def tsf_to_xlsx(tsf, dest, q=20):
         return iodata.read()
         
 if __name__ == '__main__':
-    print(get_img_jma(datetime.date(1998,6,26),"test1.jpg"))
-    print(get_img_100(datetime.date(1998,6,26),"test2.jpg"))
-    
+    #print(get_img_jma(datetime.date(1998,6,26),"test1.jpg"))
+    #print(get_img_100(datetime.date(1998,6,26),"test2.jpg"))
     args = sys.argv
     if len(args) < 3:
         print("Usage: ./auto_tenkistudy_xlsx.py [IN_TSF] [OUT_XLSX] (IMG_QUALITY = 20)")
